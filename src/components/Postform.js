@@ -34,7 +34,7 @@ class Postform extends Component {
     return (
       <div>
         <h1>Add Post</h1>
-        <form>
+        <form onSubmit={this.onSubmit}>
             <div>
                 <label>Title: </label>
                 <br />
@@ -47,7 +47,7 @@ class Postform extends Component {
                 <textarea name="body" onChange={this.onChange} value={this.state.body}/>
             </div>
             <br />
-            <button type='submit' onSubmit={this.onSubmit}>Submit</button>
+            <button type='submit'>Submit</button>
         </form>
       </div>
     )
