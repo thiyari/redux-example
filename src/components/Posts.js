@@ -1,7 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchPosts } from '../actions/postActions';
 
 class Posts extends Component {
 
+  componentDidMount() {
+    this.props.fetchPosts()
+  }
+
+/*
   constructor(props){
     super(props);
     this.state = {
@@ -15,9 +22,10 @@ class Posts extends Component {
       .then(res => res.json())
       .then(data => this.setState({posts: data}))
   }
-      
+  */    
   render() {
-    const postItems = this.state.posts.map(post => {
+    //const postItems = this.state.posts.map(post => {
+    const postItems = this.props.posts.map(post => {
       return(
       <div key={post.id}>
         <h3>{post.title}</h3>
@@ -33,4 +41,9 @@ class Posts extends Component {
   }
 }
 
-export default Posts
+const mapStateToProps = state => ({
+  posts: state.posts.items
+})
+
+//export default Posts
+export default connect(mapStateToProps, {fetchPosts})(Posts);
