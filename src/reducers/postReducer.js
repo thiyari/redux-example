@@ -5,7 +5,7 @@ const initialState = {
     item: {}
 };
 
-export default function(state = initialState, action) {
+function postReducer(state = initialState, action) {
     switch(action.type) {
         case FETCH_POSTS:
             return {
@@ -16,3 +16,5 @@ export default function(state = initialState, action) {
             return state;
     }
 }
+
+export default postReducer;
